@@ -20,10 +20,10 @@ const consulta1 = async ()=>{
 export const login = async (req,res)=>{
     const dpi = req.body.user;
     const bth = req.body.password;
-    console.log(bth)
     try{
         const pool = await database.connection;
         const resultLg = await pool.request().query(database.query.parmsLogin(dpi,bth));
+        console.log(resultLg);
         if(resultLg){
             const id = resultLg.recordset[0].IdPersona;
             const resultData = await pool.request().query(database.query.dataUser(id));
@@ -50,14 +50,14 @@ export const login = async (req,res)=>{
             });
         }else{
             res.render('./views/index',{
-                msgError:'Datos no encontrados en base de datos'
+                msgError:'No se encuentra en el padron electoral'
             });
         }
         
     }catch(error){
         console.error(error);
         res.render('./views/index',{
-            msgError:'Datos no encontrados en base de datos'
+            msgError:'No se encuentra en el padron electoral'
         });
     }
     

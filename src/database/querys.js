@@ -7,7 +7,7 @@ const dataUser =(id)=>{
     mpio.NombreMunicipio AS mpio,
     dto.NombreDepartamento AS dpto,
     pais.NombrePais AS country,
-    emp.NoEmpadronamiento AS emp,
+    emp.NoEmpadronamiento,
     lg.NombreLugar AS nombreLugar,
     lg.UbicacionGPS AS ubicacion,
     lb.NoLibro AS libro,
@@ -23,13 +23,14 @@ const dataUser =(id)=>{
     INNER JOIN ProcesoElectoral.Departamento AS dto ON dto.IdDepartamento = mpio.IdDepartamento
     INNER JOIN ProcesoElectoral.Pais as pais ON pais.IdPais = dto.IdPais
     INNER JOIN ProcesoElectoral.Empadronamiento AS emp ON emp.IdPersona = p.IdPersona
-    INNER JOIN ProcesoElectoral.Lugar AS lg ON lg.IdPersona = p.IdPersona
     
-    INNER JOIN ProcesoElectoral.Libro AS lb ON lb.IdLibro = lg.IdLibro
+    INNER JOIN ProcesoElectoral.Votacion AS vt ON vt.IdPersona = p.IdPersona
+    INNER JOIN ProcesoElectoral.Mesa AS ms ON ms.IdMesa = vt.IdMesa
+    INNER JOIN ProcesoElectoral.Libro AS lb ON lb.IdLibro = vt.IdLibro
     INNER JOIN ProcesoElectoral.Hoja AS hj ON hj.IdHoja = lb.IdHoja
-    INNER JOIN ProcesoElectoral.Mesa AS ms ON ms.IdMesa = lb.IdMesa
-    INNER JOIN ProcesoElectoral.Linea AS ln ON ln.IdLinea = lb.IdLinea
+    INNER JOIN ProcesoElectoral.Linea AS ln ON ln.IdLinea = hj.IdLinea
 
+    INNER JOIN ProcesoElectoral.Lugar AS lg On vt.IdLugar = lg.IdLugar
     INNER JOIN ProcesoElectoral.Municipio AS mupi ON mupi.IdMunicipio = lg.IdMunicipio
     INNER JOIN ProcesoElectoral.Departamento AS dpar ON dpar.IdDepartamento = mupi.IdDepartamento
     INNER JOIN ProcesoElectoral.Pais AS ps ON ps.IdPais = dpar.IdPais

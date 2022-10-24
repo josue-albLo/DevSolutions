@@ -1,6 +1,6 @@
 import express from "express"
 import config from './config.js'
-import paisRoute from './routes/DevSoluctions_routes.js'
+import paisRoute from './routes/DevSoluctions_routes.mjs'
 
 const app = express();
 

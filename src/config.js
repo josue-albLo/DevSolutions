@@ -1,9 +1,8 @@
+
 import {config} from 'dotenv'
-import path from 'path'
+
 config();
 
-const pathStt = path.resolve('src','public');;
-const pathWiews = path.resolve('src','views');
 
 
 //Configuracion de puerto 
@@ -13,8 +12,6 @@ export default{
     server: process.env.SERVER,
     database: process.env.DATABASE,
     user:process.env.USER,
-    password: process.env.PASSWORD,
-    pathStatic:  pathStt,
-    pathWiews
+    password: process.env.PASSWORD
 
 }

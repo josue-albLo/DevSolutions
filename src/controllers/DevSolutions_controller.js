@@ -3,7 +3,7 @@ import database from '../database/index.js'
 
 //Rendiriza a index
 export const getLogIn = (req,res)=>{
-    res.render('./views/index',{
+    res.render('index',{
         msgError:''
     });
 };
@@ -26,7 +26,7 @@ export const login = async (req,res)=>{
             const subBirthday = birtd.substring(4,15);
             console.log(birtd);
             console.log(subBirthday);
-            res.render('./views/home',{
+            res.render('home',{
                 name:resultData.recordset[0].name,
                 dpi:resultData.recordset[0].dpi,
                 birthday:subBirthday,
@@ -43,14 +43,14 @@ export const login = async (req,res)=>{
     
             });
         }else{
-            res.render('./views/index',{
+            res.render('index',{
                 msgError:'No se encuentra en el padron electoral'
             });
         }
         
     }catch(error){
         console.error(error);
-        res.render('./views/index',{
+        res.render('index',{
             msgError:'No se encuentra en el padron electoral'
         });
     }

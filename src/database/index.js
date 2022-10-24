@@ -1,5 +1,5 @@
-import {getConnection} from './conection'
-import {query} from './querys'
+import {getConnection} from './conection.js'
+import {query} from './querys.js'
 
 export default {
     connection: getConnection(),

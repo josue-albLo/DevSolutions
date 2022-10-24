@@ -1,5 +1,5 @@
 
-import database from '../database'
+import database from '../database/index.js'
 
 //Rendiriza a index
 export const getLogIn = (req,res)=>{

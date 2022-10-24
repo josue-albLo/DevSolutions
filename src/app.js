@@ -4,8 +4,6 @@ import paisRoute from './routes/DevSoluctions_routes.js'
 
 const app = express();
 
-console.log(config.port_database);
-
 /// settings para configurar el pueto 
 app.set('port', config.port_server)
 //mortor de plantllas

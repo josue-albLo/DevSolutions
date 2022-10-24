@@ -2,8 +2,9 @@ import {config} from 'dotenv'
 import path from 'path'
 config();
 
-const pathStt = path.resolve(__dirname,'public');
-const pathWiews = path.resolve(__dirname,'views');
+const pathStt = path.resolve('src','public');;
+const pathWiews = path.resolve('src','views');
+
 
 //Configuracion de puerto 
 export default{

@@ -1,4 +1,4 @@
-import app from './app.mjs'
+import app from './/app.mjs'
 
 app.listen(app.get('port'))
 

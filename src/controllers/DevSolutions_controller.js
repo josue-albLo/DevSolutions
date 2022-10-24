@@ -8,12 +8,6 @@ export const getLogIn = (req,res)=>{
     });
 };
 
-const consulta1 = async ()=>{
-    const pool = await database.connection;
-    const result = await pool.request().query(database.query.dataUser);
-    console.log(result.recordset);
-}
-
 //Datos solo hechos para prueva p.DPI ='1032646012364' AND p.FechaNacimiento = '2000-03-05';`;
 
 //rendiriza a home | index
@@ -61,6 +55,11 @@ export const login = async (req,res)=>{
         });
     }
     
+    
+}
+export default {
+    login,
+    getLogIn
     
 }
 

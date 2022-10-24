@@ -1,5 +1,5 @@
 import {Router}from 'express';
-import {login,getLogIn} from '../controllers/DevSolutions_controller'
+import {login,getLogIn} from '../controllers/DevSolutions_controller.js'
 
 
 console.log();

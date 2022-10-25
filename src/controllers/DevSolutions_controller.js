@@ -21,6 +21,7 @@ export const login = async (req,res)=>{
         if(resultLg){
             const id = resultLg.recordset[0].IdPersona;
             const resultData = await pool.request().query(database.query.dataUser(id));
+            pool.close();
             console.log(resultData.recordset);
             const birtd = `${resultData.recordset[0].birthday}`;
             const subBirthday = birtd.substring(4,15);

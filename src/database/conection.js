@@ -8,7 +8,7 @@ const dbSettings ={
     database: config.database,
     port: config.port_database,
     options:{
-        encrypt: true, // for azure
+        encrypt: false, // for azure
         trustServerCertificate: true // change to true for local dev / self-signed certs
     }
 

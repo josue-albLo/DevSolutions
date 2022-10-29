@@ -1,6 +1,8 @@
 
 import database from '../database/index.js'
-
+import mp from '../public/js/mapa.js'
+let latitud;
+let longitud;
 //Rendiriza a index
 export const getLogIn = (req,res)=>{
     res.render('index',{
@@ -8,9 +10,6 @@ export const getLogIn = (req,res)=>{
     });
 };
 
-//Datos solo hechos para prueva p.DPI ='1032646012364' AND p.FechaNacimiento = '2000-03-05';`;
-
-//rendiriza a home | index
 export const login = async (req,res)=>{
     const dpi = req.body.user;
     const bth = req.body.password;
@@ -21,17 +20,20 @@ export const login = async (req,res)=>{
         if(resultLg){
             const id = resultLg.recordset[0].IdPersona;
             const resultData = await pool.request().query(database.query.dataUser(id));
-            pool.close();
+            // pool.close();
             console.log(resultData.recordset);
             const birtd = `${resultData.recordset[0].birthday}`;
             const subBirthday = birtd.substring(4,15);
+            latitud = resultData.recordset[0].latitud;
+            longitud = resultData.recordset[0].longitud;
             console.log(birtd);
             console.log(subBirthday);
+
             res.render('home',{
-                name:resultData.recordset[0].name,
+                name:`${resultData.recordset[0].p_nombre} ${resultData.recordset[0].s_nombre} ${resultData.recordset[0].p_apellido} ${resultData.recordset[0].s_apellido}`,
                 dpi:resultData.recordset[0].dpi,
                 birthday:subBirthday,
-                address:resultData.recordset[0].address,
+                address:resultData.recordset[0].address, 
                 mpio:resultData.recordset[0].mpio,
                 depto:resultData.recordset[0].dpto,
                 place_votation:resultData.recordset[0].nombreLugar,
@@ -40,8 +42,6 @@ export const login = async (req,res)=>{
                 line:resultData.recordset[0].linea,
                 page:resultData.recordset[0].hoja,
                 nDpto:resultData.recordset[0].mpioVotacion
-    
-    
             });
         }else{
             res.render('index',{
@@ -58,9 +58,9 @@ export const login = async (req,res)=>{
     
     
 }
+
 export default {
     login,
-    getLogIn
-    
+    getLogIn,
 }
 

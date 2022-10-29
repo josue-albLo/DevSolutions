@@ -36,3 +36,9 @@
 background-color: transparent;
 text-align: end;
 }
+#map{
+    width: 700px;
+    height: 500px;
+    margin: 0 auto;
+}
+

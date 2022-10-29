@@ -11,14 +11,12 @@
   <title>Home</title>
   <link rel="shortcut icon" href="source/img/logo.ico">
   <link rel="stylesheet" href="source/css/style.css">
+  <!-- Enlace par leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
 </head>
 
 <body>
-  <div class="home align-items-sm-center">
-
-  </div>
-
-
   <header>
     <div class="mb-0">
       <img src="source/img/encabezado1.png" width="100%" alt="" height="150">
@@ -29,6 +27,7 @@
 
   </header>
 </body>
+
 <body>
   <div class="home">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -37,21 +36,21 @@
 
     <div class="container text-end">
       <form action="/" method="GET">
-        <input class="btn btn-primary" type ="submit" value="Cerrar Sesion">
+        <input class="btn btn-primary" type="submit" value="Cerrar Sesion">
       </form>
-      
+
       <div class="row">
 
         <div class="col-md-4 align-items-sm-start">
 
           <!--Fotografia de la persona-->
           <div class="text-end">
-            <img src="source/img/logo.png" width="150" alt="">
+            <img src="source/img/firma.jpg" width="150" alt="">
           </div>
 
           <!--firma de la persona-->
           <div class="text-center">
-            <img src="source/img/logo.png" width="150" alt="">
+            <img src="source/img/profile.png" width="150" alt="">
           </div>
 
           <!--Logo TSE-->
@@ -63,39 +62,42 @@
         <div class="col align-items-sm-center">
           <!--Informacion personal del usuario-->
           <h2 class="fw-bold text-center py-5">Información Personal de Usuario</h2>
-            <label class="estilo">Nombre</label>
-          
+
           <div class="div-1">
+            <label class="estilo">Nombre:</label>
             <label for="floatingTextarea">
               <%= name %>
             </label>
           </div>
-          <label for="">DPI</label>
           <div class="div-1">
+            <label class="estilo">DPI:</label>
             <label for="floatingTextarea">
               <%= dpi %>
             </label>
           </div>
-          <label for="">Fecha Nacimiento</label>
+
           <div class="div-1">
+            <label class="estilo">Fecha Nacimiento:</label>
             <label for="floatingTextarea">
               <%= birthday %>
             </label>
           </div>
-          <label for="">Direccion</label>
           <div class="div-1">
+            <label for="" class="estilo">Direccion:</label>
             <label for="floatingTextarea">
               <%= address %>
             </label>
           </div>
-          <label for="">Municipio</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Municipio:</label>
             <label for="floatingTextarea">
               <%= mpio %>
             </label>
           </div>
-          <label for="">Departamento</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Departamento:</label>
             <label for="floatingTextarea">
               <%= depto %>
             </label>
@@ -105,38 +107,43 @@
         <div class="col align-items-sm-end">
           <!--Informacion del centro de votacion-->
           <h2 class="fw-bold text-center py-5">Información del Centro de Votación 2023</h2>
-          <label for="">Departamento</label>
           <div class="div-1">
+            <label for="" class="estilo">Departamento:</label>
             <label for="floatingTextarea">
               <%= nDpto %>
             </label>
           </div>
-          <label for="">Lugar de votacion</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Lugar de votacion:</label>
             <label for="floatingTextarea">
               <%= place_votation %>
             </label>
           </div>
-          <label for="">Libro</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Libro:</label>
             <label for="floatingTextarea">
               <%= book %>
             </label>
           </div>
-          <label for="">Mesa</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Mesa:</label>
             <label for="floatingTextarea">
               <%= table %>
             </label>
           </div>
-          <label for="">Pagina</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Pagina:</label>
             <label for="floatingTextarea">
               <%= page %>
             </label>
           </div>
-          <label for="">Linea</label>
+
           <div class="div-1">
+            <label for="" class="estilo">Linea:</label>
             <label for="floatingTextarea">
               <%= line %>
             </label>
@@ -148,13 +155,13 @@
 </body>
 
 <body>
-  <br><br>
-  <div class="mb-5 text-center">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123536.7461480083!2d-90.56260113464793!3d14.626209590197723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a180655c3345%3A0x4a72c7815b867b25!2sCdad.%20de%20Guatemala!5e0!3m2!1ses!2sgt!4v1666282942065!5m2!1ses!2sgt"
-      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <br>
+  <br>
+  <div>
+    <div id="map">
+    </div>
   </div>
+
 </body>
 
 <footer class="text-center text-white" style="background-color: #caced1;">
@@ -183,6 +190,10 @@
     © 2022 Copyright:
     <a class="text-white">Dev Solutions Software</a>
   </div>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+  <script src="../controllers/DevSolutions_controller.js"></script>
   <!-- Copyright -->
 </footer>
 

@@ -1,7 +1,9 @@
 const dataUser =(id)=>{
-    const cadena = `SELECT p.P_Nombre AS name,
+    const cadena = `SELECT p.P_Nombre AS p_nombre,
+    p.S_Nombre AS s_nombre,
     p.DPI AS dpi, 
-    p.P_Pellido AS lastName,
+    p.P_Apellido AS p_apellido,
+    p.S_Apellido AS s_apellido,
     p.Direccion AS address,
     FechaNacimiento AS birthday,
     mpio.NombreMunicipio AS mpio,
@@ -9,7 +11,8 @@ const dataUser =(id)=>{
     pais.NombrePais AS country,
     emp.NoEmpadronamiento,
     lg.NombreLugar AS nombreLugar,
-    lg.UbicacionGPS AS ubicacion,
+    lg.Latitud AS latitud,
+    lg.Longitud AS longitud,
     lb.NoLibro AS libro,
     hj.IdHoja AS hoja,
     ms.NoMesa AS mesa,
@@ -26,7 +29,7 @@ const dataUser =(id)=>{
     
     INNER JOIN ProcesoElectoral.Votacion AS vt ON vt.IdPersona = p.IdPersona
     INNER JOIN ProcesoElectoral.Mesa AS ms ON ms.IdMesa = vt.IdMesa
-    INNER JOIN ProcesoElectoral.Libro AS lb ON lb.IdLibro = vt.IdLibro
+    INNER JOIN ProcesoElectoral.Libro AS lb ON lb.IdLibro= ms.IdLibro
     INNER JOIN ProcesoElectoral.Hoja AS hj ON hj.IdHoja = lb.IdHoja
     INNER JOIN ProcesoElectoral.Linea AS ln ON ln.IdLinea = hj.IdLinea
 
@@ -35,8 +38,7 @@ const dataUser =(id)=>{
     INNER JOIN ProcesoElectoral.Departamento AS dpar ON dpar.IdDepartamento = mupi.IdDepartamento
     INNER JOIN ProcesoElectoral.Pais AS ps ON ps.IdPais = dpar.IdPais
     
-    WHERE p.IdPersona = ${id};
-    `;
+    WHERE p.IdPersona = ${id};`;
     return cadena
 } 
 //WHERE p.DPI ='1032646012364' AND p.FechaNacimiento = '2000-03-05';`;
@@ -49,5 +51,4 @@ const parmsLogin =(dpi,bth)=>{
 export const query = {
     dataUser,
     parmsLogin
-
 }
